@@ -12,7 +12,8 @@ class ScrapCbf
     attr_reader :matches
     alias all matches
 
-    def initialize(matches_elements, round_number)
+    def initialize(matches_elements, round_number, championship)
+      @championship = championship
       @matches = []
 
       scrap_matches(matches_elements, round_number)
@@ -34,6 +35,9 @@ class ScrapCbf
 
     def scrap_match(match_element, round_number)
       match = Match.new
+      match.championship = @championship.year
+      match.serie = @championship.division
+
       match.round = round_number
 
       # e.g "Qua, 03/02/2021 16:00 - Jogo: 336"

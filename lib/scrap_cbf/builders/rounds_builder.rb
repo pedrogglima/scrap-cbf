@@ -8,7 +8,8 @@ class ScrapCbf
 
     delegate [:each] => :@rounds
 
-    def initialize(document)
+    def initialize(document, championship)
+      @championship = championship
       @rounds = []
 
       scrap_rounds(document)
@@ -47,6 +48,8 @@ class ScrapCbf
 
     def scrap_round(round_element, round_number)
       round = Round.new
+      round.championship = @championship.year
+      round.serie = @championship.division
 
       # Because index starts on zero, we add 1 for matching with Rounds ID
       round.number = round_number + 1
@@ -60,7 +63,11 @@ class ScrapCbf
         # matches are founded on <ul>
         next unless element.element? && element.name == 'ul'
 
-        round.matches = MatchesPerRoundBuilder.new(element, round.number)
+        round.matches = MatchesPerRoundBuilder.new(
+          element,
+          round.number,
+          @championship
+        )
       end
       round
     end

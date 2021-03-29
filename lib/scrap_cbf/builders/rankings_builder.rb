@@ -9,7 +9,8 @@ class ScrapCbf
 
     delegate [:each] => :@rankings
 
-    def initialize(document)
+    def initialize(document, championship)
+      @championship = championship
       @rankings = []
       @header = []
       @rows   = []
@@ -98,10 +99,13 @@ class ScrapCbf
     def create_rankings_from_table
       @rows.each do |row|
         ranking = Ranking.new
-        attr_accessors = Ranking::ATTR_ACCESSORS
+        ranking.championship = @championship.year
+        ranking.serie = @championship.division
+
+        attrs_rank = Ranking::ATTRS_RANK
 
         row.cells.each_with_index do |cell, idx|
-          ranking.send "#{attr_accessors[idx]}=", cell.value
+          ranking.send "#{attrs_rank[idx]}=", cell.value
         end
 
         @rankings << ranking
