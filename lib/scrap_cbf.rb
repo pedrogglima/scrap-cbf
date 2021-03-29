@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'nokogiri'
+require 'open-uri'
 require 'json'
 require 'active_support/core_ext/hash/indifferent_access'
 require 'forwardable'
@@ -68,16 +70,6 @@ class ScrapCbf
     }.with_indifferent_access
   end
 
-  # @return [TeamsBuilder] instance.
-  def teams
-    @teams ||= TeamsBuilder.new(@parsed_document)
-  end
-
-  # @return [RoundsBuilder] instance.
-  def rounds
-    @rounds ||= RoundsBuilder.new(@parsed_document)
-  end
-
   # @return [MatchesBuilder] instance.
   def matches
     @matches ||= rounds.matches_builder
@@ -86,5 +78,15 @@ class ScrapCbf
   # @return [RankingsBuilder] instance.
   def rankings
     @rankings ||= RankingsBuilder.new(@parsed_document)
+  end
+
+  # @return [RoundsBuilder] instance.
+  def rounds
+    @rounds ||= RoundsBuilder.new(@parsed_document)
+  end
+
+  # @return [TeamsBuilder] instance.
+  def teams
+    @teams ||= TeamsBuilder.new(@parsed_document)
   end
 end
