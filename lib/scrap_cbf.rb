@@ -77,12 +77,12 @@ class ScrapCbf
 
   # @return [RankingsBuilder] instance.
   def rankings
-    @rankings ||= RankingsBuilder.new(@parsed_document)
+    @rankings ||= RankingsBuilder.new(@parsed_document, @championship)
   end
 
   # @return [RoundsBuilder] instance.
   def rounds
-    @rounds ||= RoundsBuilder.new(@parsed_document)
+    @rounds ||= RoundsBuilder.new(@parsed_document, @championship)
   end
 
   # @return [TeamsBuilder] instance.
