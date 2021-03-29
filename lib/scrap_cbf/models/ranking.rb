@@ -2,22 +2,21 @@
 
 class ScrapCbf
   class Ranking
-    # @todo Translate attrs_acessors to English
     ATTR_ACCESSORS = %i[
-      posicao
+      position
       team
-      pontos
-      jogos
-      vitorias
-      empates
-      derrotas
-      gols_pro
-      gols_contra
-      saldo_de_gols
-      cartoes_amarelos
-      cartoes_vermelhos
-      aproveitamento
-      recentes
+      points
+      played
+      won
+      drawn
+      lost
+      goals_for
+      goals_against
+      goal_difference
+      yellow_card
+      red_card
+      advantages
+      form
       next_opponent
     ].freeze
 
