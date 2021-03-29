@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'nokogiri'
-require 'open-uri'
-
 class ScrapCbf
   # This class is responsible for:
   # - Handler users input.
@@ -23,6 +20,12 @@ class ScrapCbf
     SAMPLE_PATH = "#{File.dirname(__FILE__)}/samples/" \
     'cbf_division_a_2020.html'
 
+    class << self
+      def parse_document(year, division, opts)
+        new(year, division, opts).parsed_document
+      end
+    end
+
     attr_reader :year,
                 :division,
                 :load_from_sample,
@@ -37,13 +40,24 @@ class ScrapCbf
     #
     # @return [Document] new instance
     def initialize(year, division, opts)
-      load_from_sample = opts.fetch(:load_from_sample) { false }
-      sample_path = opts[:sample_path]
+      @year = year
+      @division = division
+      @load_from_sample = opts.fetch(:load_from_sample) { false }
+      @sample_path = opts[:sample_path]
 
       @parsed_document =
-        parse_document(year, division, load_from_sample, sample_path)
+        parse_document(year, division, @load_from_sample, @sample_path)
     end
 
+    private
+
+    # @param [Integer] year the Championship year
+    # @param [Symbol] division the Championship division. see DIVISIONS.
+    # @option opts [Boolean] load_from_sample yes or no to load specific
+    #  HTML file
+    # @option opts [Symbol] sample_path path to the sample otherwise default
+    #
+    # @return [Nokogiri::HTML::Document] new instance
     def parse_document(year, division, load_from_sample, sample_path)
       url = if load_from_sample
               sample_path || SAMPLE_PATH
@@ -55,8 +69,6 @@ class ScrapCbf
             end
       Nokogiri::HTML(URI.open(url))
     end
-
-    private
 
     def build_url(year, division)
       "#{URL}/#{DIVISIONS_PATH[division]}/#{year}"
