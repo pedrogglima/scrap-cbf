@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activesupport', '~> 5.2.3'
+  spec.add_dependency 'activesupport', '~> 6.1.0'
   spec.add_dependency 'forwardable', '~> 1.2.0'
   spec.add_dependency 'json', '~> 2.1.0'
   spec.add_dependency 'nokogiri', '~> 1.10.3'
