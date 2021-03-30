@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activesupport', '~> 6.1.0'
   spec.add_dependency 'forwardable', '~> 1.2.0'
   spec.add_dependency 'json', '~> 2.1.0'
-  spec.add_dependency 'nokogiri', '~> 1.10.3'
+  spec.add_dependency 'nokogiri', '>= 1.5.9'
 
   spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'rake', '~> 12.3.2'
