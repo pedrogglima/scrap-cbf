@@ -49,7 +49,7 @@ class ScrapCbf
     def scrap_round(round_element, round_number)
       round = Round.new
       round.championship = @championship.year
-      round.serie = @championship.division
+      round.serie = @championship.serie
 
       # Because index starts on zero, we add 1 for matching with Rounds ID
       round.number = round_number + 1

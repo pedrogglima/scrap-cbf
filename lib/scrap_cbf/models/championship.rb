@@ -7,14 +7,14 @@ class ScrapCbf
 
     ATTR_ACCESSORS = %i[
       year
-      division
+      serie
     ].freeze
 
     attr_accessor(*ATTR_ACCESSORS)
 
-    def initialize(year, division)
+    def initialize(year, serie)
       @year = year
-      @division = division
+      @serie = serie
     end
 
     def to_h

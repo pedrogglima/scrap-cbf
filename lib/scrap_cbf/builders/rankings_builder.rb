@@ -100,7 +100,7 @@ class ScrapCbf
       @rows.each do |row|
         ranking = Ranking.new
         ranking.championship = @championship.year
-        ranking.serie = @championship.division
+        ranking.serie = @championship.serie
 
         attrs_rank = Ranking::ATTRS_RANK
 

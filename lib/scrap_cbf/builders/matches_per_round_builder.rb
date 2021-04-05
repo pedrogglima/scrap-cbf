@@ -36,7 +36,7 @@ class ScrapCbf
     def scrap_match(match_element, round_number)
       match = Match.new
       match.championship = @championship.year
-      match.serie = @championship.division
+      match.serie = @championship.serie
 
       match.round = round_number
 

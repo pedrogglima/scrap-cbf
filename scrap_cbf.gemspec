@@ -20,14 +20,12 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activesupport', '~> 6.1.0'
+  spec.add_dependency 'activesupport', '>= 5.0.0', '<= 6.1.0'
   spec.add_dependency 'forwardable', '~> 1.2.0'
-  spec.add_dependency 'json', '~> 2.1.0'
+  spec.add_dependency 'json', '~> 2.2', '>= 2.2.0'
   spec.add_dependency 'nokogiri', '>= 1.5.9'
 
-  spec.add_development_dependency 'bundler', '~> 1.17'
-  spec.add_development_dependency 'rake', '~> 12.3.2'
   spec.add_development_dependency 'rspec', '~> 3.10.0'
-  spec.add_development_dependency 'rubocop', '~> 0.81.0'
+  spec.add_development_dependency 'rubocop', '~> 0.81', '>= 0.81.0'
   spec.add_development_dependency 'yard', '~> 0.9'
 end

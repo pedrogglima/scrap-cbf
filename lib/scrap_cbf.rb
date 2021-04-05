@@ -44,18 +44,18 @@ class ScrapCbf
 
   # @param [Hash] opts
   # @option opts [Integer] :year The Championship year.
-  # @option opts [Symbol] :division The Championship division.
+  # @option opts [Symbol] :serie The Championship serie.
   # @option opts [Symbol] :load_from_sample Load championship from sample.
   # @option opts [Symbol] :sample_path to the sample otherwise default
   #
   # @return [ScrapCbf] new instance
   def initialize(opts = {})
     year = opts.fetch(:year, Date.today.year.to_i)
-    division = opts.fetch(:division, :serie_a)
+    serie = opts.fetch(:serie, :serie_a)
 
-    @document = Document.new(year, division, opts)
+    @document = Document.new(year, serie, opts)
     @parsed_document = @document.parsed_document
-    @championship = Championship.new(year, division)
+    @championship = Championship.new(year, serie)
   end
 
   # returns all entities scraped in hash format.
