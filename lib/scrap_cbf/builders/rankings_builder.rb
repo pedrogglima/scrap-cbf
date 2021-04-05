@@ -83,7 +83,10 @@ class ScrapCbf
     end
 
     def scrap_position_if_exist(text)
-      return text[/^\d{1,2}º/i].strip if text&.match?(/^\d{1,2}º/i)
+      if text&.match?(/^\d{1,2}º/i)
+        position = text[/^\d{1,2}º/i].strip
+        return position.delete 'º'
+      end
 
       text
     end
