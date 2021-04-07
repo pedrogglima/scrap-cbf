@@ -1,6 +1,6 @@
 # ScrapCbf
 
-With ScrapCbf you will be able to scrap data from the [CBF official page](https://www.cbf.com.br/futebol-brasileiro/competicoes/campeonato-brasileiro-serie-a) for Serie A and B. Some of these data are: matches, matches per round, ranking table, teams and the team's flag image. You will also be able to choose, by year, the Championship you want to scrap. The CBF page has records starting from the Championship 2012, and they keep updating, daily, the current Championship with the results from the matches. On below we have a sample from the scraped data:
+With ScrapCbf you will be able to scrap data from the [CBF official page](https://www.cbf.com.br/futebol-brasileiro/competicoes/campeonato-brasileiro-serie-a) for Serie A and B. Some of these data are: matches, matches per round, ranking table and teams. You will also be able to choose, by year, the Championship you want to scrap. The CBF page has records starting from the Championship 2012, and they keep updating daily the current Championship with the results from the matches. On below we have a sample from the scraped data:
 
     "championship": {
       "year": 2021,
@@ -79,7 +79,7 @@ With ScrapCbf you will be able to scrap data from the [CBF official page](https:
       ... # more teams
     ]
 
-Note: if you need to save the scrap data on your app, you can check the gem [ScrapCbfRecord](https://github.com/pedrogglima/scrap-cbf-record).
+_Note: if you need to save the scrap data on your app, you can check the gem [ScrapCbfRecord](https://github.com/pedrogglima/scrap-cbf-record)._
 
 ## Installation
 
@@ -133,7 +133,7 @@ If you want to check the year or serie you can pass as argument
     # returns the url for the CBF page
     ScrapCbf::Document::URL
 
-Note: because this gem depends on a third party software, it's out of our control to foresee changes on the CBF official page. You may benefit from background jobs while using this gem. A rake task to inspect the scraped data may help, too:
+_Note: because this gem depends on a third party software, it's out of our control to foresee changes on the CBF official page. You may benefit from background jobs while using this gem. A rake task to inspect the scraped data may help, too_:
 
     namespace :scrap_cbf do
       task :print do
@@ -147,7 +147,7 @@ Note: because this gem depends on a third party software, it's out of our contro
 
 ## Development
 
-Right now, this gem doesn't cover too much tests, at least the code related to scraping html. That is because we rely on a third party software, which means we can't predict changes. Another reason is the fact that we are dealing with views code, which means they usually tend to change if more frequency. For last, it doesn't seems to have standart ways of testing this kind of application. To help understanding the library I wrote a Readme inside each module folder.
+Right now, this gem doesn't cover too much tests, at least the code related to scraping html. That is because we rely on a third party software, which means we can't predict changes. Another reason is the fact that we are dealing with views code, which means they usually tend to change if more frequency. For last, it doesn't seems to have standart ways of testing this kind of application. To help understanding the library I wrote a Readme inside each module's folder.
 
 To run the tests
 
